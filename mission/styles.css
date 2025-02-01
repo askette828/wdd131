@@ -79,6 +79,49 @@ li {
     height: auto;
 }
 
+.theme-control {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+#theme-selector {
+    padding: 0.3rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 0.9rem;
+}
+
+/* --------------------- Dark theme styles ---------------------------*/
+body.dark {
+    background-color: #1a1a1a;
+    color: #fff;
+}
+
+body.dark .content {
+    border-color: #444;
+}
+
+body.dark h2 {
+    color: #66b3ff;
+    border-bottom-color: #444;
+}
+
+body.dark #theme-selector {
+    background-color: #333;
+    color: #fff;
+    border-color: #444;
+}
+
+body.dark .logo img {
+    background-color: white;
+    padding: 5px;
+    border-radius: 5px;
+}
+
 @media (max-width: 480px) {
     .container {
         padding: 0.5rem;
