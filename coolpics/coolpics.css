@@ -24,7 +24,9 @@ body {
     line-height: 1.6;
     color: var(--text-dark);
     background-color: #f0f0f0;
-    padding-bottom: 3rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 h1, h2 {
@@ -42,8 +44,15 @@ img {
 header {
     background-color: var(--primary-color);
     color: white;
-    padding: 1rem 0;
+    padding: 2rem 0 1rem 0;
     text-align: center;
+    margin-top: 0;
+    position: relative; /* Add this */
+}
+
+header h2 {
+    margin-top: 1rem;
+    color: var(--text-light);
 }
 
 h1 {
@@ -54,6 +63,7 @@ nav {
     display: flex;
     justify-content: center;
     gap: 2rem;
+    background: transparent; /* Ensure nav is transparent */
 }
 
 nav a {
@@ -72,6 +82,7 @@ nav a.active {
 }
 
 main {
+    flex: 1;
     padding: 1rem;
     max-width: 1200px;
     margin: 0 auto;
@@ -84,9 +95,10 @@ h2 {
     margin: 1rem 0;
 }
 
+/* Update gallery default columns */
 .gallery {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
     padding: 1rem;
 }
@@ -103,7 +115,7 @@ h2 {
 }
 
 .image-container:hover {
-    transform: scale(1.02);
+    transform: scale(1.05);
 }
 
 .image-container img {
@@ -119,23 +131,141 @@ footer {
     color: var(--text-light);
     text-align: center;
     padding: 1rem;
-    margin-top: 2rem;
-    position: fixed;
-    bottom: 0;
     width: 100%;
-    z-index: 100;
-    padding: 0.8rem;
+    margin-top: auto;
+}
+
+.hide {
+    display: none;
+}
+
+.menu {
+    position: relative;
+    width: 100%;
+    background-color: transparent;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+.menu ul {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    list-style: none;
+    padding: 0;
+}
+
+.menu ul li {
+    display: inline;
+    margin-right: 15px;
+}
+
+.menu ul li a {
+    color: white;
+    text-decoration: underline;
+}
+
+.menu.hide {
+    display: flex;
+}
+
+/* Update viewer styles */
+.viewer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* Adjust background opacity here (0.1 to 1.0) */
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.close-viewer {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: var(--primary-color);
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+}
+
+.viewer img {
+    /* Adjust image size here */
+    width: 80vw;     /* Change this value to increase/decrease width */
+    height: 450px;    /* Change this value to increase/decrease height */
+    border-radius: 8px;
+    object-fit: contain; /* keeps image proportion */
+}
+
+.viewer.hide {
+    display: none;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+}
+
+.menu-toggle .close-text {
+    display: none;
+}
+
+.menu-toggle.active .menu-text {
+    display: show;
+}
+
+.menu-toggle.active .close-text {
+    display: inline;
 }
 
 @media (min-width: 768px) {
     .gallery {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .viewer {
+        padding: 4rem;
+    }
+
+    .viewer img {
+        /* Adjust tablet size here */
+        width: 90vw;      /* Use viewport width for responsive sizing */
+        max-height: 85vh; /* Use viewport height for responsive sizing */
+    }
+
+    .close-viewer {
+        top: 3rem;
+        right: 3rem;
+        font-size: 1.8rem;
+    }
 }
 
 @media (min-width: 1024px) {
     .gallery {
         grid-template-columns: repeat(3, 1fr);
+    }
+
+    .viewer img {
+        /* Adjust desktop size here */
+        width: 80vw;      /* Decrease percentage for smaller images */
+        max-height: 80vh; /* Decrease percentage for smaller images */
     }
 }
 
@@ -172,6 +302,51 @@ footer {
     main {
         padding: 0.5rem;
         margin-bottom: 4rem;
+    }
+}
+
+/* Update media query to prevent mobile menu behavior */
+@media (max-width: 768px) {
+    header {
+        padding: 1.5rem 0;
+    }
+    
+    .menu ul {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .menu-toggle {
+        display: block;
+        margin-bottom: 0;  /* Remove bottom margin */
+    }
+
+    .menu {
+        position: fixed;
+        top: 0;
+        right: -250px;
+        width: 250px;
+        height: 100vh;
+        background-color: var(--primary-color);
+        padding: 3rem 1rem 1rem; /* Reduce top padding */
+        transition: right 0.3s ease;
+        z-index: 999;
+    }
+
+    .menu.show {
+        right: 0;
+    }
+
+    .menu ul {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        margin-top: 1rem;  /* Add space after close button */
+    }
+
+    .menu ul li {
+        display: block;
+        margin: 1rem 0;
     }
 }
 
@@ -238,5 +413,5 @@ footer {
     main {
         padding: 2rem;
         margin-bottom: 6rem;
-    }
 }
+    }

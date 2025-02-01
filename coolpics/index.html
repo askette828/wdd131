@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cool Pics - A responsive image gallery with interactive features like a dynamic navigation menu and an image viewer for a better user experience.">
+    <meta name="author" content="Dias Doktyrbek">
     <title>Cool Pics 📸</title>
     <link rel="stylesheet" href="coolpics.css">
     <style>
@@ -14,14 +16,26 @@
 <body>
     <header>
         <h1>Cool Pics 📸</h1>
-        <nav>
-            <a href="#">Home</a>
-            <a href="#">People</a>
-            <a href="#">Places</a>
-            <a href="#">About</a>
-            <a href="#">Contact</a>
+        <button class="menu-toggle">
+            <span class="menu-text">Menu</span>
+            <span class="close-text">✕</span>
+        </button>
+        <nav class="menu">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">People</a></li>
+                <li><a href="#">Places</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
         </nav>
     </header>
+
+    <div class="viewer hide">
+        <button class="close-viewer">X</button>
+        <img src="" alt="Expanded view">
+        <div class="image-caption"></div>
+    </div>
 
     <main>
         <h2>Current Work</h2>
@@ -59,5 +73,6 @@
     <footer>
         <p>© 2024 Not a real site ;)</p>
     </footer>
+    <script src="coolpics.js"></script>
 </body>
 </html>
