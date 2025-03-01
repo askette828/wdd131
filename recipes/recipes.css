@@ -1,0 +1,286 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.logo-icon {
+    position: relative;
+    width: 40px;
+    height: 50px;
+    border: 2px solid #000;
+    margin-right: 5px;
+}
+
+.logo-icon::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 15px;
+    background-color: white;
+    border: 2px solid #000;
+    top: -8px;
+    right: -8px;
+    transform: rotate(15deg);
+}
+
+.chef-hat {
+    position: absolute;
+    width: 20px;
+    height: 12px;
+    background-color: white;
+    border: 2px solid #000;
+    border-radius: 5px 5px 0 0;
+    top: 5px;
+    left: 10px;
+}
+
+.logo-text {
+    font-size: 24px;
+    font-weight: normal;
+    letter-spacing: 1px;
+}
+
+.search-container {
+    display: flex;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.search-input {
+    flex-grow: 1;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-right: none;
+    outline: none;
+    font-size: 14px;
+}
+
+.search-button {
+    width: 40px;
+    background-color: white;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-icon {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #000;
+    border-radius: 50%;
+    position: relative;
+}
+
+.search-icon::after {
+    content: "";
+    position: absolute;
+    width: 7px;
+    height: 1px;
+    background-color: #000;
+    bottom: -3px;
+    right: -3px;
+    transform: rotate(45deg);
+    transform-origin: right;
+    border: 1px solid #000;
+}
+
+.recipe-card {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.recipe-content {
+    display: flex;
+    gap: 20px;
+}
+
+.recipe-image {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.recipe-details {
+    flex-grow: 1;
+}
+
+.recipe-tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border: 1px solid #000;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.recipe-title {
+    color: #3498db;
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-weight: normal;
+}
+
+.recipe-rating {
+    margin-bottom: 15px;
+    color: #f1c40f;
+    font-size: 18px;
+}
+
+.star {
+    color: #f1c40f;
+}
+
+.star-empty {
+    color: #ccc;
+}
+
+.recipe-description {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    font-size: 12px;
+    color: #7f8c8d;
+}
+
+.social-icons {
+    display: flex;
+    gap: 5px;
+}
+
+.social-icon {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+}
+
+.instagram-icon::before {
+    content: "📷";
+}
+
+.youtube-icon::before {
+    content: "▶️";
+}
+
+.pinterest-icon::before {
+    content: "P";
+    font-weight: bold;
+}
+
+/* Media Queries for Responsive Design */
+@media screen and (max-width: 768px) {
+    body {
+        padding: 15px;
+    }
+
+    .logo-text {
+        font-size: 20px;
+    }
+
+    .recipe-content {
+        flex-direction: column;
+    }
+
+    .recipe-image {
+        width: 100%;
+        height: 200px;
+    }
+
+    .recipe-title {
+        font-size: 20px;
+    }
+
+    .recipe-description {
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .logo-container {
+        margin-bottom: 20px;
+    }
+
+    .logo-icon {
+        width: 30px;
+        height: 40px;
+    }
+
+    .logo-text {
+        font-size: 18px;
+    }
+
+    .search-input {
+        font-size: 13px;
+    }
+
+    .recipe-card {
+        padding: 15px;
+    }
+
+    .recipe-tag {
+        font-size: 12px;
+    }
+
+    .recipe-title {
+        font-size: 18px;
+    }
+
+    .recipe-rating {
+        font-size: 16px;
+    }
+
+    .recipe-description {
+        font-size: 12px;
+    }
+
+    .footer {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
+
+    .social-icon {
+        width: 25px;
+        height: 25px;
+        font-size: 14px;
+    }
+}
